@@ -39,6 +39,29 @@ The frontend runs at:
 http://127.0.0.1:5173
 ```
 
+## Run With Docker
+
+From the project root:
+
+```powershell
+docker compose up --build
+```
+
+The Docker frontend runs at:
+
+```text
+http://127.0.0.1:8080
+```
+
+The Docker backend also exposes:
+
+```text
+http://127.0.0.1:8000
+```
+
+In Docker, the frontend Nginx container proxies `/api` requests to the backend
+container. The SQLite database is mounted from `backend/test.db`.
+
 ## API
 
 - `GET /api/users`
