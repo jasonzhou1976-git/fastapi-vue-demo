@@ -62,6 +62,38 @@ http://127.0.0.1:8000
 In Docker, the frontend Nginx container proxies `/api` requests to the backend
 container. The SQLite database is mounted from `backend/test.db`.
 
+## Deploy To Local Kubernetes
+
+Build local images:
+
+```powershell
+docker build -t fastapi-backend:local ./backend
+docker build -t fastapi-frontend:local ./frontend
+```
+
+Deploy:
+
+```powershell
+kubectl apply -f k8s/backend.yaml
+kubectl apply -f k8s/frontend.yaml
+```
+
+Check status:
+
+```powershell
+kubectl get pods
+kubectl get svc
+```
+
+Open the frontend:
+
+```text
+http://localhost:30080
+```
+
+The frontend Service exposes NodePort `30080`. The backend Service is internal
+only and is reached by the frontend through `http://backend:8000`.
+
 ## API
 
 - `GET /api/users`
