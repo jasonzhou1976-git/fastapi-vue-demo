@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/jasonzhou1976-git/fastapi-frontend:d5f8233cd0a82ec0994ec4ad213938b642d5e033
+          image: ghcr.io/jasonzhou1976-git/fastapi-frontend:4c7c06a0901ded89c831f06f2b07df63d07e7714
           imagePullPolicy: Always
           ports:
             - containerPort: 80
