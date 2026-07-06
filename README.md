@@ -64,14 +64,19 @@ container. The SQLite database is mounted from `backend/test.db`.
 
 ## Deploy To Local Kubernetes
 
-Build local images:
+The Kubernetes manifests use GHCR images:
 
-```powershell
-docker build -t fastapi-backend:local ./backend
-docker build -t fastapi-frontend:local ./frontend
+```text
+ghcr.io/jasonzhou1976-git/fastapi-backend:<commit-sha>
+ghcr.io/jasonzhou1976-git/fastapi-frontend:<commit-sha>
 ```
 
-Deploy:
+GitHub Actions builds and pushes those images when `backend/**` or
+`frontend/**` changes, then commits the new image tags into `k8s/*.yaml`.
+Argo CD watches the `k8s/` directory on the `master` branch and syncs those
+changes into the local Kubernetes cluster.
+
+To deploy the current manifests manually:
 
 ```powershell
 kubectl apply -f k8s/backend.yaml
