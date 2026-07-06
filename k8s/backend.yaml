@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: fastapi-backend:local
-          imagePullPolicy: IfNotPresent
+          image: ghcr.io/jasonzhou1976-git/fastapi-backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
 ---
